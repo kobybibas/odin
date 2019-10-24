@@ -54,8 +54,8 @@ def perturbate_input(model, images, magnitude, temper):
 
 
 def produce_score(model, testloader, model_name, dataset_name, perturbation_magnitude, temper, out_dir):
-    is_ind = ((model_name == 'resnet10' or model_name == 'resnet10') and dataset_name == 'cifar10') or (
-            (model_name == 'resnet100' or model_name == 'resnet100') and dataset_name == 'cifar100')
+    is_ind = ((model_name == 'densenet10' or model_name == 'resnet10') and dataset_name == 'cifar10') or (
+            (model_name == 'densenet100' or model_name == 'resnet100') and dataset_name == 'cifar100')
 
     suffix = 'ind' if is_ind is True else 'ood'
     file_name = osp.join(out_dir, "{}_odin_confidence_{}_{}.npy".format(model_name, suffix, dataset_name))
