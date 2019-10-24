@@ -1,0 +1,45 @@
+session_name: odin
+windows:
+- window_name: odin
+  layout: tiled
+  shell_command_before:
+    - cd ~/odin/code
+    - source ~/.bashrc
+    - source activate odin
+  panes:
+    - shell_command: # Densenet100
+      - python main.py --nn densenet10 --dataset Imagenet --magnitude 0.0014 --temperature 1000 --gpu 0
+      - sleep 5s
+      - python main.py --nn densenet10 --dataset Imagenet_resize --magnitude 0.0014 --temperature 1000 --gpu 0
+      - sleep 5s
+      - python main.py --nn densenet10 --dataset LSUN --magnitude 0 --temperature 1000 --gpu 0
+      - sleep 5s
+      - python main.py --nn densenet10 --dataset LSUN_resize --magnitude 0.0014 --temperature 1000 --gpu 0
+      - sleep 5s
+      - python main.py --nn densenet10 --dataset iSUN --magnitude 0.0014 --temperature 1000 --gpu 0
+      - sleep 5s
+      - python main.py --nn densenet10 --dataset Uniform --magnitude 0.0014 --temperature 1000 --gpu 0
+      - sleep 5s
+      - python main.py --nn densenet10 --dataset Gaussian --magnitude 0.0014 --temperature 1000 --gpu 0
+      - sleep 5s
+    - shell_command: # Densenet10
+      - python main.py --nn densenet100 --dataset Imagenet --magnitude 0.0014 --temperature 1000 --gpu 0
+      - sleep 5s
+      - python main.py --nn densenet100 --dataset Imagenet_resize --magnitude 0.0028 --temperature 1000 --gpu 0
+      - sleep 5s
+      - python main.py --nn densenet100 --dataset LSUN --magnitude 0.0028 --temperature 1000 --gpu 0
+      - sleep 5s
+      - python main.py --nn densenet100 --dataset LSUN_resize --magnitude 0.0028 --temperature 1000 --gpu 0
+      - sleep 5s
+      - python main.py --nn densenet100 --dataset iSUN --magnitude 0.0028 --temperature 1000 --gpu 0
+      - sleep 5s
+      - python main.py --nn densenet100 --dataset Uniform --magnitude 0.0028 --temperature 1000 --gpu 0
+      - sleep 5s
+      - python main.py --nn densenet100 --dataset Gaussian --magnitude 0.0028 --temperature 1000 --gpu 0
+      - sleep 5s
+    - shell_command: # IND
+      - python main.py --nn densenet10 --dataset cifar10 --magnitude 0.0014 --temperature 1000 --gpu 0
+      - sleep 5s
+      - python main.py --nn densenet100 --dataset cifar100 --magnitude 0.0028 --temperature 1000 --gpu 0
+      - sleep 5s
+
